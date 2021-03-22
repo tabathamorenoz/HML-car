@@ -1,0 +1,32 @@
+<div class="jumbotron text-center">
+    <div class="cars1"></div>
+    <h1><img src="/assets/hypernovalabs.png" class="hero-image" /></h1>
+    <h2 class="title">Choose your location</h2>
+    <br>
+    <br>
+    <div class="row text-center">
+        <div class="col-lg-10 offset-lg-1 col-md-12 text-center">
+            <div class="lead">
+                <form [formGroup]="searchCarForm" (ngSubmit)="onSubmit(searchCarForm)" class="form-group form-group-lg" novalidate>
+                    <div class="input-group input-group-lg">
+                        <select formControlName="location" class="form-control" placeholder="Location">
+              <option [ngValue]="null" disabled>Location</option>
+              <option *ngFor="let item of locations" [value]="item">
+                {{item}}
+              </option>
+            </select>
+                    </div>
+                    <br>
+                    <div class="input-group input-group-lg">
+                        <input type="date" formControlName="start_date" class="form-control col-lg-7 col-md-7 col-sm-12" placeholder="Start date">
+                        <button [disabled]="!searchCarForm.valid" class="btn btn-success form-control col-lg-5 col-md-5 col-sm-12">Search Cars</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>

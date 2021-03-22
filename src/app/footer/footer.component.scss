@@ -1,0 +1,35 @@
+.Footer {
+    color: #4b727e !important;
+    background: #FEF894;
+    animation: mymove 10s infinite;
+}
+
+@keyframes mymove {
+    0% {
+        background: rgba(151, 237, 218, 255);
+    }
+    50% {
+        background: #b3dbd3;
+    }
+    100% {
+        background: #FEF894;
+    }
+}
+
+.footer-container {
+    color: #4b727e;
+    background: #FEF894;
+    animation: mymove 10s infinite;
+}
+
+@keyframes mymove {
+    0% {
+        background: rgba(151, 237, 218, 255);
+    }
+    50% {
+        background: #b3dbd3;
+    }
+    100% {
+        background: #FEF894;
+    }
+}

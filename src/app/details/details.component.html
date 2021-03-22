@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-lg-10 offset-lg-1 col-md-12 text-center">
+        <div class="lead">
+            <form class="form-group" novalidate>
+                <div class="row">
+                    <select class="form-control col-lg-7 col-md-7 col-sm-12" placeholder="Location" [(ngModel)]="location_input" (change)="onChangeLocation($event)" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let item of locations" [value]="item">
+              {{item}}
+            </option>
+          </select>
+                    <input type="date" class="form-control col-lg-5 col-md-5 col-sm-12" placeholder="Start date" [(ngModel)]="start_date_input" (keyup)="onChangeStartDate($event)" [ngModelOptions]="{standalone: true}">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 offset-lg-1 col-md-12 text-center">
+        <div class="lead">
+            <form class="form-group" novalidate>
+                <div class="row">
+
+                    <input type="text" class="form-control col-md-4 col-sm-12" placeholder="Search" [(ngModel)]="query_input" (keyup)="onChangeQuery($event)" [ngModelOptions]="{standalone: true}" />
+
+                    <select class="form-control col-md-2 col-sm-12" name="trans_type_input" [(ngModel)]="trans_type_input" (change)="onChangeTransType($event)">
+            <option *ngFor="let item of trans_type" [value]="item">
+              {{item}}
+            </option>
+          </select>
+
+                    <select class="form-control col-md-2 col-sm-12" name="car_type_input" [(ngModel)]="car_type_input" (change)="onChangeCarType($event)">
+            <option *ngFor="let item of car_type" [value]="item">
+              {{item}}
+            </option>
+          </select>
+
+                    <select class="form-control col-md-2 col-sm-12" name="fuel_type_input" [(ngModel)]="fuel_type_input" (change)="onChangeFuelType($event)">
+            <option *ngFor="let item of fuel_type" [value]="item">
+              {{item}}
+            </option>
+          </select>
+
+                    <select class="form-control col-md-2 col-sm-12" name="sort_by_input" [(ngModel)]="sort_by_input" (change)="onChangeSortBy($event)">
+            <option *ngFor="let item of sort_by" [value]="item">
+              {{item}}
+            </option>
+          </select>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 offset-lg-1 col-md-12 card" *ngFor="let item of items | paginate: { itemsPerPage: 6, currentPage: page }" [class.bg-secondary]="item.selected">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <img class="" src="{{item.photo}}" alt="{{item.name}}" width="100%">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h5 class="card-title">
+                        {{item.name}}
+                        <span class="badge"><i class="fa fa-chair"></i> {{item.seats}}</span>
+                    </h5>
+                    <p class="card-text">
+                        <span class="badge"><i class="fa fa-cogs"></i> {{item.transmission}}</span>
+                        <span class="badge"><i class="fa fa-car"></i> {{item.car_Type}}</span>
+                        <span class="badge"><i class="fa fa-gas-pump"></i> {{item.fuel_Type}}</span>
+                        <br>
+                        <br>
+                        <app-weekstatus [data]="item.availability"></app-weekstatus>
+                        <br>
+                        <br>
+                    </p>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                    <h3 class="d-flex justify-content-center text-green">${{item.price}}</h3>
+
+                    <button *ngIf="isAvailable(item)" href="#" class="btn btn-primary btn-block"><i class="fa fa-key"></i>
+            Book</button>
+                    <span *ngIf="!isAvailable(item)" class="btn btn-danger btn-block"><i class="fa fa-times-circle"></i>
+            Not Available</span>
+
+                    <button [disabled]="!isAvailable(item)" (click)="item.selected = !item.selected" class="btn btn-secondary btn-block">{{item.selected ? 'Clear' : 'Select'}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 offset-lg-1 col-md-12 text-center">
+        <div class="lead">
+            <div class="d-flex justify-content-center">
+                <pagination-controls (pageChange)="page = $event" maxSize="9" directionLinks="true" autoHide="true" responsive="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

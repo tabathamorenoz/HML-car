@@ -1,0 +1,47 @@
+.form-container {
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 500px;
+    padding: 16px;
+    margin: 10px auto;
+    background: #f7f7f7;
+}
+
+h3 {
+    background: #007b94;
+    padding: 10px 0;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    transition: all 0, 30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 4%;
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #555;
+    padding: 3%;
+    font: 95% Arial, Helvetica, sans-serif;
+}
+
+.btn-send {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #007b94;
+    border-bottom: 2px solid #30c29e;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+    font-size: 15px;
+}
+
+.btn-send:hover {
+    background: #2ebc99;
+}
